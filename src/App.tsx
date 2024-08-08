@@ -1,10 +1,11 @@
-import { Dashboard } from "./pages/dashboard/Dasboard";
+import { Home } from "./pages/dashboard/home/Home";
 import { TooltipProvider } from "./components/ui/tooltip";
 
 import { Routes, Route, Navigate } from "react-router-dom";
 import { Login } from "./pages/Login";
-import DashboardContainer from "./components/core/container/Dashboard-container";
+import DashboardContainer from "./components/core/container/DashboardContainer";
 import { Charts } from "./pages/dashboard/Chart";
+import { Products } from "./pages/dashboard/products/Products";
 
 export default function App() {
   const isAuth = true;
@@ -15,8 +16,9 @@ export default function App() {
     <TooltipProvider>
       <Routes>
         <Route Component={DashboardContainer} path="/dashboard">
-          <Route path="" Component={Dashboard}></Route>
+          <Route path="" Component={Home}></Route>
           <Route path="anality" Component={Charts}></Route>
+          <Route path="products" Component={Products}></Route>
         </Route>
         <Route Component={Login} path="/"></Route>
         <Route Component={Login} path="/login"></Route>

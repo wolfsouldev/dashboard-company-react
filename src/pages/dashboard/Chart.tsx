@@ -36,7 +36,7 @@ import { Separator } from "@/components/ui/separator";
 
 export function Charts() {
   return (
-    <section className=" w-full grid grid-cols-3 gap-x-5">
+    <section className=" w-full grid grid-cols-1  lg:grid-cols-3 gap-x-5">
       <div className="grid w-full gap-6 sm:grid-cols-2  lg:grid-cols-1 ">
         <Card className="lg:max-w-md" x-chunk="charts-01-chunk-0">
           <CardHeader className="space-y-0 pb-2">

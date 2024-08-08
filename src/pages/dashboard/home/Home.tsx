@@ -46,11 +46,12 @@ import {
 } from "@/components/ui/table";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
-export function Dashboard() {
+export function Home() {
   return (
     <section className="grid flex-1 items-start gap-4  sm:py-0 md:gap-8 lg:grid-cols-3 xl:grid-cols-3">
       <div className="grid auto-rows-max items-start gap-4 md:gap-8 lg:col-span-2">
         <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-2 xl:grid-cols-4">
+
           <Card className="sm:col-span-2" x-chunk="dashboard-05-chunk-0">
             <CardHeader className="pb-3">
               <CardTitle>Tus Ordenes</CardTitle>
@@ -65,6 +66,7 @@ export function Dashboard() {
               <Button className="bg-primary">Crear nueva orden</Button>
             </CardFooter>
           </Card>
+
           <Card x-chunk="dashboard-05-chunk-1">
             <CardHeader className="pb-2">
               <CardDescription>Esta semana</CardDescription>
@@ -79,6 +81,7 @@ export function Dashboard() {
               <Progress value={25} aria-label="25% increase" />
             </CardFooter>
           </Card>
+
           <Card x-chunk="dashboard-05-chunk-2">
             <CardHeader className="pb-2">
               <CardDescription>Este mes</CardDescription>
@@ -93,6 +96,7 @@ export function Dashboard() {
               <Progress value={12} aria-label="12% increase" />
             </CardFooter>
           </Card>
+          
         </div>
         <Tabs defaultValue="week">
           <div className="flex items-center">
