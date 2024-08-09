@@ -33,7 +33,7 @@ import {
 import { Separator } from "@/components/ui/separator";
 import { CustomerBreadcrumb } from "@/components/core/CustomerBreadcrumb";
 
-export function Charts() {
+ function Charts() {
   return (
     <section className=" w-full grid grid-cols-1  lg:grid-cols-3 gap-x-5">
       <CustomerBreadcrumb/>
@@ -863,3 +863,5 @@ export function Charts() {
     </section>
   );
 }
+
+export default Charts

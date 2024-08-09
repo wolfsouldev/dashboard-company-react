@@ -2,7 +2,7 @@ import { CustomerBreadcrumb } from "@/components/core/CustomerBreadcrumb";
 import { columns } from "./components/product-table-data";
 import { ProductTable } from "./components/ProductTable";
 
-export const Products = () => {
+ const Products = () => {
   const data = [
     {
       id: "728ed52f",
@@ -33,3 +33,6 @@ export const Products = () => {
     </>
   );
 };
+
+
+export default Products

@@ -1,5 +1,8 @@
 import { TableClient } from "./components/TableClient";
 
-export const ClientPage = () => {
+ const ClientPage = () => {
   return <TableClient />;
 };
+
+
+export default ClientPage
