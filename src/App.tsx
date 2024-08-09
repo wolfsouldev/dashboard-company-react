@@ -1,4 +1,4 @@
-import { Home } from "./pages/dashboard/home/Home";
+import { Orders } from "./pages/dashboard/home/Home";
 import { TooltipProvider } from "./components/ui/tooltip";
 
 import { Routes, Route, Navigate } from "react-router-dom";
@@ -16,7 +16,7 @@ export default function App() {
     <TooltipProvider>
       <Routes>
         <Route Component={DashboardContainer} path="/dashboard">
-          <Route path="" Component={Home}></Route>
+          <Route path="orders" Component={Orders}></Route>
           <Route path="anality" Component={Charts}></Route>
           <Route path="products" Component={Products}></Route>
         </Route>

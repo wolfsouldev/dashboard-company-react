@@ -1,7 +1,7 @@
 "use client";
 
 import { Badge } from "@/components/ui/badge";
-//import { Checkbox } from "@/components/ui/checkbox";
+import { Checkbox } from "@radix-ui/react-checkbox";
 import { ColumnDef } from "@tanstack/react-table";
 import { MoveDown } from "lucide-react";
 
@@ -17,32 +17,33 @@ export type Product = {
 };
 
 export const columns: ColumnDef<Product>[] = [
-  // {
-  //   id: "select",
-  //   header: ({ table }) => (
-  //     <Checkbox
-  //       checked={
-  //         table.getIsAllPageRowsSelected() ||
-  //         (table.getIsSomePageRowsSelected() && "indeterminate")
-  //       }
-  //       onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
-  //       aria-label="Select all"
-  //     ></Checkbox>
-  //   ),
-  //   cell: ({ row }) => (
-  //     <Checkbox
-  //       checked={row.getIsSelected()}
-  //       onCheckedChange={(value) => row.toggleSelected(!!value)}
-  //       aria-label="Select row"
-  //     />
-  //   ),
+  {
+    id: "select",
+    header: ({ table }) => (
+      <Checkbox
+        checked={
+          table.getIsAllPageRowsSelected() ||
+          (table.getIsSomePageRowsSelected() && "indeterminate")
+        }
+        onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
+        aria-label="Select all"
+      ></Checkbox>
+    ),
+    cell: ({ row }) => (
+      <Checkbox
+        checked={row.getIsSelected()}
+        onCheckedChange={(value) => row.toggleSelected(!!value)}
+        aria-label="Select row"
+      />
+    ),
 
-  //   // enableSorting: false,
-  //   // enableHiding: false,
-  // },
+    // enableSorting: false,
+    // enableHiding: false,
+  },
   {
     accessorKey: "product",
     header: "Producto",
+    
     cell({ row }) {
       const src: string = row.original.img;
       const product: string = row.original.product;
@@ -55,7 +56,7 @@ export const columns: ColumnDef<Product>[] = [
             alt={product + "-img"}
             className="rounded-lg"
           />
-          <p className="">{product}</p>
+          <p className="font-semibold">{product}</p>
         </div>
       );
     },
@@ -71,7 +72,7 @@ export const columns: ColumnDef<Product>[] = [
 
       return (
         <span
-          className={`font-semibold mx-auto flex gap-x-2${
+          className={` mx-auto flex gap-x-2${
             alert ? "text-red-500" : "text-green-500"
           } `}
         >
@@ -107,7 +108,7 @@ export const columns: ColumnDef<Product>[] = [
         year: "numeric",
       }).format(date);
 
-      return <div className=" font-medium">{formatted}</div>;
+      return <div className=" ">{formatted}</div>;
     },
   },
   {

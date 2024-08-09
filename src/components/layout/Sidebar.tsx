@@ -30,7 +30,7 @@ export default function SideBar() {
       id: 2,
       label: "Ordenes",
       tooltip: "Ordenes",
-      to: "",
+      to: "orders",
       icon: ShoppingCart,
     },
     {
@@ -44,7 +44,7 @@ export default function SideBar() {
       id: 4,
       label: "Clientes",
       tooltip: "Clientes",
-      to: "",
+      to: "clients",
       icon: Users2,
       current : pathname.includes("client")
     },
