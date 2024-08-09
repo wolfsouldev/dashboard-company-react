@@ -4,14 +4,12 @@ import {
   Package,
   Package2,
   PanelLeft,
-  Search,
   ShoppingCart,
   Users2,
 } from "lucide-react";
 import { Button } from "../ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "../ui/sheet";
 
-import { Input } from "../ui/input";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -78,15 +76,8 @@ export default function HeaderAdmin() {
           </nav>
         </SheetContent>
       </Sheet>
-     
-      <div className="relative ml-auto flex-1 md:grow-0">
-        <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
-        <Input
-          type="search"
-          placeholder="Search..."
-          className="w-full rounded-lg bg-background pl-8 md:w-[200px] lg:w-[336px]"
-        />
-      </div>
+
+      <div className="relative ml-auto flex-1 md:grow-0"></div>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button
@@ -94,22 +85,22 @@ export default function HeaderAdmin() {
             size="icon"
             className="overflow-hidden rounded-full"
           >
-            <img
-              src="/placeholder-user.jpg"
+            {/* <img
+              src={Users2}
               width={36}
               height={36}
               alt="Avatar"
               className="overflow-hidden rounded-full"
-            />
+            /> */}
+            <Users2/>
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end">
-          <DropdownMenuLabel>My Account</DropdownMenuLabel>
+          <DropdownMenuLabel>Mi cuenta </DropdownMenuLabel>
           <DropdownMenuSeparator />
-          <DropdownMenuItem>Settings</DropdownMenuItem>
-          <DropdownMenuItem>Support</DropdownMenuItem>
+          <DropdownMenuItem>Ajustes</DropdownMenuItem>
           <DropdownMenuSeparator />
-          <DropdownMenuItem>Logout</DropdownMenuItem>
+          <DropdownMenuItem>Cerrar sesión</DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
     </header>

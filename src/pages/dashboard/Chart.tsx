@@ -40,11 +40,11 @@ import { CustomerBreadcrumb } from "@/components/core/CustomerBreadcrumb";
       <div className="grid w-full gap-6 sm:grid-cols-2  lg:grid-cols-1 ">
         <Card className="lg:max-w-md" x-chunk="charts-01-chunk-0">
           <CardHeader className="space-y-0 pb-2">
-            <CardDescription>Today</CardDescription>
+            <CardDescription>Hoy</CardDescription>
             <CardTitle className="text-4xl tabular-nums">
               12,584{" "}
               <span className="font-sans text-sm font-normal tracking-normal text-muted-foreground">
-                steps
+                Ventas
               </span>
             </CardTitle>
           </CardHeader>
@@ -52,7 +52,7 @@ import { CustomerBreadcrumb } from "@/components/core/CustomerBreadcrumb";
             <ChartContainer
               config={{
                 steps: {
-                  label: "Steps",
+                  label: "Ventas",
                   color: "hsl(var(--chart-1))",
                 },
               }}
@@ -107,7 +107,7 @@ import { CustomerBreadcrumb } from "@/components/core/CustomerBreadcrumb";
                   axisLine={false}
                   tickMargin={4}
                   tickFormatter={(value) => {
-                    return new Date(value).toLocaleDateString("en-US", {
+                    return new Date(value).toLocaleDateString("es-Es", {
                       weekday: "short",
                     });
                   }}
@@ -118,7 +118,7 @@ import { CustomerBreadcrumb } from "@/components/core/CustomerBreadcrumb";
                     <ChartTooltipContent
                       hideIndicator
                       labelFormatter={(value) => {
-                        return new Date(value).toLocaleDateString("en-US", {
+                        return new Date(value).toLocaleDateString("es-Es", {
                           day: "numeric",
                           month: "long",
                           year: "numeric",
@@ -154,13 +154,12 @@ import { CustomerBreadcrumb } from "@/components/core/CustomerBreadcrumb";
           </CardContent>
           <CardFooter className="flex-col items-start gap-1">
             <CardDescription>
-              Over the past 7 days, you have walked{" "}
-              <span className="font-medium text-foreground">53,305</span> steps.
+              En los últimos 7 días se han realizado  {" "}
+              <span className="font-medium text-foreground">53,305</span> ventas.
             </CardDescription>
             <CardDescription>
-              You need{" "}
-              <span className="font-medium text-foreground">12,584</span> more
-              steps to reach your goal.
+              Como objetivo{" "}
+              <span className="font-medium text-foreground">12,584</span>.
             </CardDescription>
           </CardFooter>
         </Card>
