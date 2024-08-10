@@ -21,6 +21,14 @@ export default function App() {
       <Routes>
         <Route Component={DashboardContainer} path="/dashboard">
           <Route
+            path=""
+            element={
+              <LoadingPage>
+                <LazyOrders />
+              </LoadingPage>
+            }
+          ></Route>
+          <Route
             path="orders"
             element={
               <LoadingPage>
