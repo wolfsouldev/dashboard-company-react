@@ -18,6 +18,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "../ui/dropdown-menu";
+import { ModeToggle } from "../core/ModeToggle";
 
 export default function HeaderAdmin() {
   return (
@@ -77,9 +78,13 @@ export default function HeaderAdmin() {
         </SheetContent>
       </Sheet>
 
-      <div className="relative ml-auto flex-1 md:grow-0"></div>
+      <div className="relative ml-auto flex-1 md:grow-0">
+      <ModeToggle/>
+
+      </div>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
+
           <Button
             variant="outline"
             size="icon"

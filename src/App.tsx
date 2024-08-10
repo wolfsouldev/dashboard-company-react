@@ -2,9 +2,9 @@ import { TooltipProvider } from "./components/ui/tooltip";
 
 import { Routes, Route, Navigate } from "react-router-dom";
 import { Login } from "./pages/Login";
-import DashboardContainer from "./components/core/container/DashboardContainer";
 import { lazy } from "react";
 import { LoadingPage } from "./components/core/LoadingPage";
+import DashboardContainer from "./components/container/DashboardContainer";
 
 const LazyOrders = lazy(() => import("@/pages/dashboard/home/Page"));
 const LazyProducts = lazy(() => import("@/pages/dashboard/products/Page"));
