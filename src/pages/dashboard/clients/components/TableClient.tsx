@@ -13,7 +13,6 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui";
-import { PackageOpen } from "lucide-react";
 import { NotContentRow } from "@/components/core/tables/NotContentRow";
 
 export const TableClient = () => {
@@ -22,7 +21,7 @@ export const TableClient = () => {
       id: "728ed52f",
       firstName: "Prueba",
       lastName: "A",
-      photo: "/img/products/product-1.webp",
+      photo: "/img/avatar/avatar-1.png",
       email: "chupamelo@gmail.com",
       phone: "53698741",
       category: "VIP",
@@ -31,18 +30,19 @@ export const TableClient = () => {
       id: "728ed52f",
       firstName: "Prueba",
       lastName: "A",
-      photo: "/img/products/product-1.webp",
+      photo: "/img/avatar/avatar-2.png",
       email: "chupamelo@gmail.com",
       phone: "53698741",
+      category: "-",
     },
     // ...
   ];
 
-  const data2 = [];
+  //const data2 = [];
 
   const table = useReactTable({
     columns,
-    data: data2,
+    data: data,
     getCoreRowModel: getCoreRowModel(),
   });
   return (
