@@ -52,6 +52,9 @@ const translatePath = (path: string) => {
     case "orders":
       return "Ordenes";
       break;
+    case "clients":
+      return "Clientes";
+      break;
 
     default:
       break;

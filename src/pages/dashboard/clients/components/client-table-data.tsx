@@ -47,7 +47,8 @@ const columns: ColumnDef<Client>[] = [
             width={60}
             height={60}
             alt={firstName + "-avatar"}
-            className="rounded-lg"
+
+            className="rounded-full"
           />
           <div className="flex flex-col">
             <span className="font-semibold">
