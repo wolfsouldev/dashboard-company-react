@@ -7,9 +7,9 @@ import {
   Home,
   LineChart,
   Package,
-  Package2,
   Settings,
   ShoppingCart,
+  Store,
   Users2,
 } from "lucide-react";
 import { NavLink, useLocation } from "react-router-dom";
@@ -66,8 +66,7 @@ export default function SideBar() {
             href="#"
             className="group flex h-9 w-9 shrink-0 items-center justify-center gap-2 rounded-full bg-primary text-lg font-semibold text-primary-foreground md:h-8 md:w-8 md:text-base"
           >
-            <Package2 className="h-4 w-4 transition-all group-hover:scale-110" />
-            <span className="sr-only">Admin Example</span>
+            <Store className="size-5 transition-all group-hover:scale-110" />
           </a>
           {routes.map((route) => {
             const { to, label, tooltip, icon: Icon, id,current } = route;
