@@ -24,7 +24,7 @@ export default function SideBar() {
       tooltip: "Home",
       to: "",
       icon: Home,
-      current : pathname.includes("dashboard")
+      current : pathname.endsWith("dashboard")
     },
     {
       id: 2,
@@ -32,6 +32,7 @@ export default function SideBar() {
       tooltip: "Ordenes",
       to: "orders",
       icon: ShoppingCart,
+      current : pathname.includes("orders")
     },
     {
       id: 3,
@@ -39,6 +40,7 @@ export default function SideBar() {
       tooltip: "Productos",
       to: "products",
       icon: Package,
+      current : pathname.includes("products")
     },
     {
       id: 4,
