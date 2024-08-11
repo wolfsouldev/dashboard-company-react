@@ -71,7 +71,8 @@ export const columns: ColumnDef<Product>[] = [
             className="rounded-lg"
             layoutId={layoutIdImg}
           />
-          <motion.p  className="font-semibold hover:underline">{product}</motion.p>
+          <motion.p 
+           className="font-semibold hover:underline">{product}</motion.p>
         </NavLink>
       );
     },
