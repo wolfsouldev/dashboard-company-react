@@ -10,6 +10,7 @@ const LazyOrders = lazy(() => import("@/pages/dashboard/home/Page"));
 const LazyProducts = lazy(() => import("@/pages/dashboard/products/Page"));
 const LazyClients = lazy(() => import("@/pages/dashboard/clients/Page"));
 const LazyAnality = lazy(() => import("@/pages/dashboard/Chart"));
+const LazyProductDetail = lazy(() => import("@/pages/dashboard/products/[id]/ProductDetail"));
 
 export default function App() {
   const isAuth = true;
@@ -41,6 +42,14 @@ export default function App() {
             element={
               <LoadingPage>
                 <LazyProducts />
+              </LoadingPage>
+            }
+          />
+           <Route
+            path="products/:id"
+            element={
+              <LoadingPage>
+                <LazyProductDetail />
               </LoadingPage>
             }
           />

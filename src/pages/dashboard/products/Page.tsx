@@ -1,31 +1,10 @@
 import { CustomerBreadcrumb } from "@/components/core/CustomerBreadcrumb";
 import { columns } from "./components/product-table-data";
 import { ProductTable } from "./components/ProductTable";
+import data from "./data/product-data";
 
  const Products = () => {
-  const data = [
-    {
-      id: "728ed52f",
-      price: 100,
-      product: "Urban Explorer Sneakers",
-      img: "/img/products/product-1.webp",
-      createdAt: new Date(),
-      published: true,
-      stock: 100,
-      alertStock: 50,
-    },
-    {
-      id: "728ed52f",
-      price: 100,
-      product: "Urban Explorer Sneakers",
-      img: "/img/products/product-2.webp",
-      createdAt: new Date(),
-      published: false,
-      stock: 90,
-      alertStock: 600,
-    },
-    // ...
-  ];
+  
   return (
     <>
     <CustomerBreadcrumb />

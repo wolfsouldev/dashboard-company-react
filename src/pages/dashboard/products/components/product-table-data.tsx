@@ -1,9 +1,18 @@
-"use client";
+import { ColumnDef } from "@tanstack/react-table";
+import { MoreHorizontal, MoveDown } from "lucide-react";
+import { NavLink } from "react-router-dom";
+import { motion } from "framer-motion";
 
 import { Badge } from "@/components/ui/badge";
-import { Checkbox } from "@radix-ui/react-checkbox";
-import { ColumnDef } from "@tanstack/react-table";
-import { MoveDown } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Checkbox } from "@/components/ui/checkbox";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { generateLayoutId } from "@/lib/utils";
 
 export type Product = {
   id: string;
@@ -14,6 +23,9 @@ export type Product = {
   published: boolean;
   stock: number;
   alertStock: number;
+  description?: string;
+  views: number;
+  likes: number;
 };
 
 export const columns: ColumnDef<Product>[] = [
@@ -43,21 +55,24 @@ export const columns: ColumnDef<Product>[] = [
   {
     accessorKey: "product",
     header: "Producto",
-    
+
     cell({ row }) {
-      const src: string = row.original.img;
-      const product: string = row.original.product;
+      const { img: src, product, id } = row.original;
+
+      const layoutIdImg = generateLayoutId([product, src, id]);
+      
       return (
-        <div className="flex gap-x-2 ">
-          <img
+        <NavLink to={`${id}`} className="flex gap-x-2 ">
+          <motion.img
             src={src}
             width={60}
             height={60}
             alt={product + "-img"}
             className="rounded-lg"
+            layoutId={layoutIdImg}
           />
-          <p className="font-semibold">{product}</p>
-        </div>
+          <motion.p  className="font-semibold hover:underline">{product}</motion.p>
+        </NavLink>
       );
     },
   },
@@ -77,7 +92,7 @@ export const columns: ColumnDef<Product>[] = [
           } `}
         >
           {stock}
-          {alert && <MoveDown className="size-4" /> }
+          {alert && <MoveDown className="size-4" />}
         </span>
       );
     },
@@ -130,5 +145,32 @@ export const columns: ColumnDef<Product>[] = [
         </Badge>
       );
     },
+  },
+  {
+    accessorKey: "actions",
+    header: "",
+    cell({ row }) {
+      const { id } = row.original;
+      return (
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button aria-haspopup="true" size="icon" variant="ghost">
+              <MoreHorizontal className="h-4 w-4" />
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="start" className="[&>*]:flex gap-5">
+            <DropdownMenuItem className="flex gap-x-2 items-center" asChild>
+              {/* <CustomerIcon icon={Eye} />  */}
+              <NavLink to={`${id}`}>Ver detalles</NavLink>
+            </DropdownMenuItem>
+            <DropdownMenuItem className="flex gap-x-2 items-center text-red-500 hover:text-red-500">
+              {/* <CustomerIcon icon={Trash}  />  */}
+              Delete
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
+      );
+    },
+    enableHiding: false,
   },
 ];
