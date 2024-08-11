@@ -29,22 +29,21 @@ export function ProductTable<TData, TValue>({
   data,
 }: DataTableProps<TData, TValue>) {
   const [rowSelection, setRowSelection] = useState({});
-  const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>(
-    []
-  )
+  const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
 
   const table = useReactTable({
     data,
     columns,
     getCoreRowModel: getCoreRowModel(),
     onRowSelectionChange: setRowSelection,
-    onColumnFiltersChange:setColumnFilters,
+    onColumnFiltersChange: setColumnFilters,
     state: {
       rowSelection,
-      columnFilters
+      columnFilters,
     },
   });
-
+  console.log(table.getColumn("product")?.getFilterValue());
+  console.log(columnFilters);
   return (
     <>
       <div className="flex items-center py-4">
