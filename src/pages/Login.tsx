@@ -1,3 +1,4 @@
+//import { supabase } from "@/api/supabase.condfig";
 import { FormInput } from "@/components/core/forms/FormInput";
 import { Button } from "@/components/ui/button";
 import {
@@ -9,31 +10,40 @@ import {
 } from "@/components/ui/card";
 import { Form } from "@/components/ui/form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { Loader2 } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { z } from "zod";
 
 const formSchema = z.object({
-  email: z
-    .string()
-    .email({
-      message: "Debe ingresar un email válido.",
-    })
-    .nonempty("El campo de email es obligatorio."),
-  password: z.string().nonempty("El campo de contraseña es obligatorio."),
+  email: z.string().email({
+    message: "Debe ingresar un email válido.",
+  }),
+  password: z.string(),
 });
 
 type IForm = z.infer<typeof formSchema>;
 
 export function Login() {
- // const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const form = useForm<IForm>({
     resolver: zodResolver(formSchema),
   });
 
-  const onSubmit = (data: IForm) => {
-   console.log(data)
+  const onSubmit = async (
+    //data: IForm
+  ) => {
+   // const { email, password } = data;
+    try {
+      // const { data } = await supabase.auth.signUp({ email, password });
+      // console.log(data)
+      // const isAuth = true;
+
+      navigate("/dashboard");
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -68,6 +78,7 @@ export function Login() {
                   />
                 </div>
                 <Button type="submit" className="w-full">
+                 { <Loader2 />}
                   Login
                 </Button>
                 <Button variant="outline" className="w-full">
