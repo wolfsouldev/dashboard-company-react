@@ -6,6 +6,7 @@ import {
   flexRender,
   getCoreRowModel,
   useReactTable,
+  VisibilityState,
 } from "@tanstack/react-table";
 
 import {
@@ -18,6 +19,13 @@ import {
 } from "@/components/ui/table";
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuCheckboxItem,
+  DropdownMenuContent,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -30,6 +38,7 @@ export function ProductTable<TData, TValue>({
 }: DataTableProps<TData, TValue>) {
   const [rowSelection, setRowSelection] = useState({});
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
+  const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({});
 
   const table = useReactTable({
     data,
@@ -37,16 +46,19 @@ export function ProductTable<TData, TValue>({
     getCoreRowModel: getCoreRowModel(),
     onRowSelectionChange: setRowSelection,
     onColumnFiltersChange: setColumnFilters,
+    onColumnVisibilityChange: setColumnVisibility,
     state: {
       rowSelection,
       columnFilters,
+      columnVisibility,
     },
   });
-  console.log(table.getColumn("product")?.getFilterValue());
-  console.log(columnFilters);
+
+  const colsViews = table.getAllColumns().filter((item) => item.getCanHide());
+
   return (
     <>
-      <div className="flex items-center py-4">
+      <div className="flex items-center justify-between py-4">
         <Input
           placeholder="Filtrar productos..."
           value={(table.getColumn("product")?.getFilterValue() as string) ?? ""}
@@ -55,6 +67,27 @@ export function ProductTable<TData, TValue>({
           }
           className="max-w-sm"
         />
+
+        <DropdownMenu>
+          <DropdownMenuTrigger>
+            <Button variant={"outline"}>Columnas</Button>
+          </DropdownMenuTrigger>
+
+          <DropdownMenuContent>
+            {colsViews.map((col) => {
+              return (
+                <DropdownMenuCheckboxItem
+                  key={col.id}
+                  checked={col.getIsVisible()}
+                  className="capitalize"
+                  onCheckedChange={(value) => col.toggleVisibility(value)}
+                >
+                  {col.id}
+                </DropdownMenuCheckboxItem>
+              );
+            })}
+          </DropdownMenuContent>
+        </DropdownMenu>
       </div>
       <div className="rounded-md border">
         <Table>

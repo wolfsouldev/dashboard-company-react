@@ -50,9 +50,10 @@ export const columns: ColumnDef<Product>[] = [
     ),
 
     // enableSorting: false,
-    // enableHiding: false,
+    enableHiding: false,
   },
   {
+    id:"Producto",
     accessorKey: "product",
     header: "Producto",
 
@@ -60,7 +61,7 @@ export const columns: ColumnDef<Product>[] = [
       const { img: src, product, id } = row.original;
 
       const layoutIdImg = generateLayoutId([product, src, id]);
-      
+
       return (
         <NavLink to={`${id}`} className="flex gap-x-2 ">
           <motion.img
@@ -71,13 +72,16 @@ export const columns: ColumnDef<Product>[] = [
             className="rounded-lg"
             layoutId={layoutIdImg}
           />
-          <motion.p 
-           className="font-semibold hover:underline">{product}</motion.p>
+          <motion.p className="font-semibold hover:underline">
+            {product}
+          </motion.p>
         </NavLink>
       );
     },
+    enableHiding: false,
   },
   {
+    id:"Stock",
     accessorKey: "stock",
     header: "Stock",
     cell({ row }) {
@@ -99,6 +103,7 @@ export const columns: ColumnDef<Product>[] = [
     },
   },
   {
+    id:"Precio",
     accessorKey: "price",
     header: "Precio",
     cell(props) {
@@ -113,6 +118,7 @@ export const columns: ColumnDef<Product>[] = [
     },
   },
   {
+    id:"Creado",
     accessorKey: "createdAt",
     header: "Creado",
     cell({ row }) {
@@ -128,12 +134,18 @@ export const columns: ColumnDef<Product>[] = [
     },
   },
   {
+    id:"Visible",
     accessorKey: "published",
-    header: "Visible",
+    header: ()=>{
+
+      return <div className="text-center">Visible</div>
+    },
     cell({ row }) {
       const published: boolean = row.original.published;
 
       return (
+        <div className="flex justify-center">
+
         <Badge
           variant={"default"}
           className={` font-medium cursor-default hover:text-white ${
@@ -144,6 +156,8 @@ export const columns: ColumnDef<Product>[] = [
         >
           {published ? "Visible" : "No Visible"}
         </Badge>
+        </div>
+
       );
     },
   },
