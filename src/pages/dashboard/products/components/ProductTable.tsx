@@ -26,6 +26,8 @@ import {
   DropdownMenuContent,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import CustomerIcon from "@/components/core/CustomerIcon";
+import { Eye } from "lucide-react";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -69,8 +71,11 @@ export function ProductTable<TData, TValue>({
         />
 
         <DropdownMenu>
-          <DropdownMenuTrigger>
-            <Button variant={"outline"}>Columnas</Button>
+          <DropdownMenuTrigger >
+            <Button variant={"outline"} className="flex items-center gap-x-2">
+              <CustomerIcon icon={Eye} />
+              Columnas
+            </Button>
           </DropdownMenuTrigger>
 
           <DropdownMenuContent>
@@ -79,7 +84,7 @@ export function ProductTable<TData, TValue>({
                 <DropdownMenuCheckboxItem
                   key={col.id}
                   checked={col.getIsVisible()}
-                  className="capitalize"
+                  className="capitalize "
                   onCheckedChange={(value) => col.toggleVisibility(value)}
                 >
                   {col.id}
