@@ -108,12 +108,11 @@ export const columns: ColumnDef<Product>[] = [
     header: "Precio",
     cell(props) {
       const { row } = props;
-      const price = parseFloat(row.getValue("price"));
-      const formatted = new Intl.NumberFormat("en-US", {
+      const price = parseFloat(row.original.price.toString());
+      const formatted = new Intl.NumberFormat("cu-CU", {
         style: "currency",
-        currency: "USD",
+        currency: "CUP",
       }).format(price);
-
       return <div className=" font-medium">{formatted}</div>;
     },
   },
