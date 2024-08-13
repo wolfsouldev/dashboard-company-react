@@ -11,6 +11,7 @@ const LazyProducts = lazy(() => import("@/pages/dashboard/products/Page"));
 const LazyClients = lazy(() => import("@/pages/dashboard/clients/Page"));
 const LazyAnality = lazy(() => import("@/pages/dashboard/Chart"));
 const LazyProductDetail = lazy(() => import("@/pages/dashboard/products/[id]/ProductDetail"));
+const LazyProductNew = lazy(() => import("@/pages/dashboard/products/new-product/NewProduct"));
 
 export default function App() {
   const isAuth = true;
@@ -50,6 +51,14 @@ export default function App() {
             element={
               <LoadingPage>
                 <LazyProductDetail />
+              </LoadingPage>
+            }
+          />
+           <Route
+            path="products/new"
+            element={
+              <LoadingPage>
+                <LazyProductNew />
               </LoadingPage>
             }
           />

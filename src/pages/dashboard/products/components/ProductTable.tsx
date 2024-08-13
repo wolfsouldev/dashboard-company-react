@@ -27,7 +27,8 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import CustomerIcon from "@/components/core/CustomerIcon";
-import { Eye } from "lucide-react";
+import { Eye, Plus } from "lucide-react";
+import { NavLink } from "react-router-dom";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -70,29 +71,38 @@ export function ProductTable<TData, TValue>({
           className="max-w-sm"
         />
 
-        <DropdownMenu>
-          <DropdownMenuTrigger >
-            <Button variant={"outline"} className="flex items-center gap-x-2">
-              <CustomerIcon icon={Eye} />
-              Columnas
-            </Button>
-          </DropdownMenuTrigger>
+        <aside className="flex items-center gap-x-5">
+          <DropdownMenu>
+            <DropdownMenuTrigger>
+              <Button variant={"outline"} className="flex items-center gap-x-2">
+                <CustomerIcon icon={Eye} />
+                Columnas
+              </Button>
+            </DropdownMenuTrigger>
 
-          <DropdownMenuContent>
-            {colsViews.map((col) => {
-              return (
-                <DropdownMenuCheckboxItem
-                  key={col.id}
-                  checked={col.getIsVisible()}
-                  className="capitalize "
-                  onCheckedChange={(value) => col.toggleVisibility(value)}
-                >
-                  {col.id}
-                </DropdownMenuCheckboxItem>
-              );
-            })}
-          </DropdownMenuContent>
-        </DropdownMenu>
+            <DropdownMenuContent>
+              {colsViews.map((col) => {
+                return (
+                  <DropdownMenuCheckboxItem
+                    key={col.id}
+                    checked={col.getIsVisible()}
+                    className="capitalize "
+                    onCheckedChange={(value) => col.toggleVisibility(value)}
+                  >
+                    {col.id}
+                  </DropdownMenuCheckboxItem>
+                );
+              })}
+            </DropdownMenuContent>
+          </DropdownMenu>
+
+          <NavLink to={'new'}>
+            <Button className="flex gap-x-2 items-center">
+              <CustomerIcon icon={Plus} />
+              Nuevo producto
+            </Button>
+          </NavLink>
+        </aside>
       </div>
       <div className="rounded-md border">
         <Table>
