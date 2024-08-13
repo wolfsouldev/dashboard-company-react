@@ -31,20 +31,26 @@ export function Login() {
     resolver: zodResolver(formSchema),
   });
 
-  const onSubmit = async (
-    //data: IForm
-  ) => {
-   // const { email, password } = data;
-    try {
-      // const { data } = await supabase.auth.signUp({ email, password });
-      // console.log(data)
-      // const isAuth = true;
+  const { formState } = form;
 
-      navigate("/dashboard");
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  const onSubmit = async () =>
+    //data: IForm
+    {
+      // const { email, password } = data;
+      try {
+        // const { data } = await supabase.auth.signUp({ email, password });
+        // console.log(data)
+        // const isAuth = true;
+
+        setTimeout(() => {
+          navigate("/dashboard");
+        }, 3000);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+  console.log(formState);
 
   return (
     <section className=" mx-auto flex items-center justify-center h-screen ">
@@ -78,8 +84,11 @@ export function Login() {
                   />
                 </div>
                 <Button type="submit" className="w-full">
-                 { <Loader2 />}
-                  Login
+                  {formState.isSubmitSuccessful ? (
+                    <Loader2 className="animate-spin " />
+                  ) : (
+                    <span>Login</span>
+                  )}
                 </Button>
                 <Button variant="outline" className="w-full">
                   Login con Google
