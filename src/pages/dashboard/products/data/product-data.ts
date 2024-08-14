@@ -30,4 +30,10 @@ const data = [
   // ...
 ];
 
-export default data;
+const getProducts = async () => {
+  setTimeout(() => {
+    return data;
+  }, 2000);
+};
+
+export default getProducts;

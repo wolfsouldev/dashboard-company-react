@@ -29,15 +29,18 @@ import {
 import CustomerIcon from "@/components/core/CustomerIcon";
 import { Eye, Plus } from "lucide-react";
 import { NavLink } from "react-router-dom";
+import { LoadingTable } from "@/components/core/tables/Loadingtable";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
+  isLoading: boolean;
 }
 
 export function ProductTable<TData, TValue>({
   columns,
   data,
+  isLoading,
 }: DataTableProps<TData, TValue>) {
   const [rowSelection, setRowSelection] = useState({});
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
@@ -96,7 +99,7 @@ export function ProductTable<TData, TValue>({
             </DropdownMenuContent>
           </DropdownMenu>
 
-          <NavLink to={'new'}>
+          <NavLink to={"new"}>
             <Button className="flex gap-x-2 items-center">
               <CustomerIcon icon={Plus} />
               Nuevo producto
@@ -125,7 +128,9 @@ export function ProductTable<TData, TValue>({
             ))}
           </TableHeader>
           <TableBody>
-            {table.getRowModel().rows?.length ? (
+            {isLoading ? (
+              <LoadingTable length={columns.length} />
+            ) : table.getRowModel().rows?.length ? (
               table.getRowModel().rows.map((row) => (
                 <TableRow
                   key={row.id}
