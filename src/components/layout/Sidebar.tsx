@@ -4,62 +4,17 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import {
-  Home,
-  LineChart,
-  Package,
   Settings,
-  ShoppingCart,
   Store,
-  Users2,
 } from "lucide-react";
 import { NavLink, useLocation } from "react-router-dom";
+import { getRoutes } from "./routes-link";
 
 export default function SideBar() {
-
   const { pathname } = useLocation();
-  const routes = [
-    {
-      id: 1,
-      label: "Home",
-      tooltip: "Home",
-      to: "",
-      icon: Home,
-      current : pathname.endsWith("dashboard")
-    },
-    {
-      id: 2,
-      label: "Ordenes",
-      tooltip: "Ordenes",
-      to: "orders",
-      icon: ShoppingCart,
-      current : pathname.includes("orders")
-    },
-    {
-      id: 3,
-      label: "Productos",
-      tooltip: "Productos",
-      to: "products",
-      icon: Package,
-      current : pathname.includes("products")
-    },
-    {
-      id: 4,
-      label: "Clientes",
-      tooltip: "Clientes",
-      to: "clients",
-      icon: Users2,
-      current : pathname.includes("client")
-    },
-    {
-      id: 5,
-      label: "Analítica",
-      tooltip: "Analítica",
-      to: "anality",
-      icon: LineChart,
-      current : pathname.includes("anality")
-    },
-  ];
 
+  const routes = getRoutes(pathname);
+  
   return (
     <>
       <aside className="fixed inset-y-0 left-0 z-10 hidden w-14 flex-col border-r bg-background sm:flex">
@@ -71,7 +26,7 @@ export default function SideBar() {
             <Store className="size-5 transition-all group-hover:scale-110" />
           </a>
           {routes.map((route) => {
-            const { to, label, tooltip, icon: Icon, id,current } = route;
+            const { to, label, tooltip, icon: Icon, id, current } = route;
 
             return (
               <>
