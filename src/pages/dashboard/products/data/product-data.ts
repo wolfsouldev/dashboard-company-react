@@ -31,9 +31,20 @@ const data = [
 ];
 
 const getProducts = async () => {
-  setTimeout(() => {
-    return data;
-  }, 2000);
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(data);
+    }, 100);
+  });
+};
+const getProductsId = async (id:string) => {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      const res = data.find(item => item.id === id)
+      resolve(res);
+    }, 0);
+  });
 };
 
-export default getProducts;
+
+export {getProducts,getProductsId,data};

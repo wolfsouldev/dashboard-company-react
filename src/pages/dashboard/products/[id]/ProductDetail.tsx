@@ -2,7 +2,7 @@ import CustomerIcon from "@/components/core/CustomerIcon";
 import { Button } from "@/components/ui/button";
 import { Pencil, Undo2 } from "lucide-react";
 import { useNavigate, useParams } from "react-router-dom";
-import data from "../data/product-data";
+import {data} from "../data/product-data";
 import { Product } from "../components/product-table-data";
 import { Separator } from "@/components/ui/separator";
 import StarRating from "@/components/Starts";
