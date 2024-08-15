@@ -11,7 +11,7 @@ const LazyProducts = lazy(() => import("@/pages/dashboard/products/Page"));
 const LazyClients = lazy(() => import("@/pages/dashboard/clients/Page"));
 const LazyAnality = lazy(() => import("@/pages/dashboard/Chart"));
 const LazyProductDetail = lazy(() => import("@/pages/dashboard/products/[id]/ProductDetail"));
-const LazyProductNew = lazy(() => import("@/pages/dashboard/products/new-product/NewProduct"));
+const LazyProductNew = lazy(() => import("@/pages/dashboard/products/product-form/NewProduct"));
 
 export default function App() {
   const isAuth = true;

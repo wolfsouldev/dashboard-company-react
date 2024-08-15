@@ -34,7 +34,7 @@ const getProducts = async () => {
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve(data);
-    }, 100);
+    }, 0);
   });
 };
 const getProductsId = async (id:string) => {
