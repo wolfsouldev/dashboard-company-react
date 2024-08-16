@@ -2,8 +2,8 @@ import CustomerIcon from "@/components/core/CustomerIcon";
 import { Button } from "@/components/ui/button";
 import { Pencil, Undo2 } from "lucide-react";
 import { useNavigate, useParams } from "react-router-dom";
-import {data} from "../data/product-data";
-import { Product } from "../components/product-table-data";
+import { data } from "./data/product-data";
+import { Product } from "./components/product-table-data";
 import { Separator } from "@/components/ui/separator";
 import StarRating from "@/components/Starts";
 import { motion } from "framer-motion";
@@ -36,7 +36,7 @@ const ProductDetail = () => {
         </Button>
 
         <div>
-          <Button>
+          <Button onClick={()=> navigation(`edit`)}>
             <CustomerIcon icon={Pencil} className="mr-2" /> Editar
           </Button>
         </div>
@@ -57,9 +57,7 @@ const ProductDetail = () => {
               {inStock ? "Disponible" : "Agotado"}
             </span>
 
-            <motion.span
-              className="text-3xl font-bold"
-            >
+            <motion.span className="text-3xl font-bold">
               {product.product}
             </motion.span>
 
