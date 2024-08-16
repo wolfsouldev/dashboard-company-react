@@ -15,7 +15,7 @@ import { data } from "../data/product-data";
 import { useNavigate } from "react-router-dom";
 
 const formSchema = z.object({
-  productName: z.string().nonempty(),
+  product: z.string().nonempty(),
   description: z.string(),
   code: z.string(),
   category: z.string(),
@@ -33,8 +33,8 @@ const NewProduct = () => {
   const form = useForm<IForm>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      productName: "Pepe",
-      description: "lorem",
+      product: "Producto",
+      description: "Descrpciocon del producto loco ",
       code: "21X",
       category: "1",
       price: 300,
@@ -78,7 +78,7 @@ const NewProduct = () => {
                 <FormInput
                   control={form.control}
                   label="Nombre"
-                  name="productName"
+                  name="product"
                   placeholder=""
                   type="text"
                 />
