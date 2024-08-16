@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import { FormInput } from "@/components/core/forms/FormInput";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Form } from "@/components/ui/form";
@@ -10,6 +11,8 @@ import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { data } from "../data/product-data";
+import { useNavigate } from "react-router-dom";
 
 const formSchema = z.object({
   productName: z.string().nonempty(),
@@ -25,6 +28,8 @@ const formSchema = z.object({
 type IForm = z.infer<typeof formSchema>;
 
 const NewProduct = () => {
+  const navigate = useNavigate();
+
   const form = useForm<IForm>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -47,7 +52,13 @@ const NewProduct = () => {
 
   console.log(form.watch());
 
-  const onSubmit = () => {};
+  const onSubmit = (dataFrom: IForm) => {
+    //@ts-ignore
+    dataFrom.id = "asd";
+    //@ts-ignore
+    data.push(dataFrom);
+    navigate(-1);
+  };
   return (
     <section>
       <header>

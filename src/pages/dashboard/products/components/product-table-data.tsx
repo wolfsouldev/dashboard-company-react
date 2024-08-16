@@ -121,7 +121,7 @@ export const columns: ColumnDef<Product>[] = [
     accessorKey: "createdAt",
     header: "Creado",
     cell({ row }) {
-      const date: Date = new Date(row.original.createdAt);
+      const date: Date = new Date(row.original.createdAt ?? new Date());
 
       const formatted = new Intl.DateTimeFormat("es-Es", {
         month: "short",
